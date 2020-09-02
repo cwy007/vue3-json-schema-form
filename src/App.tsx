@@ -32,7 +32,7 @@ export default defineComponent({
           <img src={img} alt="Vue logo" />
           <p>{state.name + number}</p>
           <input type="text" v-model={state.name} />
-          {renderHelloWorld(12)}
+          {renderHelloWorld(124)}
         </div>
       )
 
