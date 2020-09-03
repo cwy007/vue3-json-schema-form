@@ -6,7 +6,8 @@ const schema = {
   properties: {
     name: {
       type: 'string',
-      format: 'test',
+      test: false,
+      // format: 'test',
       // minLength: 10,
     },
     age: {
@@ -31,9 +32,29 @@ const schema = {
 }
 
 const ajv = new Ajv() // options can be passed, e.g. {allErrors: true}
-ajv.addFormat('test', (data) => {
-  console.log(data, '------------')
-  return data === 'haha'
+// ajv.addFormat('test', (data) => {
+//   console.log(data, '------------')
+//   return data === 'haha'
+// })
+ajv.addKeyword('test', {
+  macro() {
+    return {
+      minLength: 10,
+    }
+  },
+  // compile(sch, parentSchema) {
+  //   console.log(sch, parentSchema)
+  //   // return true
+  //   return () => true
+  // },
+  // metaSchema: {
+  //   type: 'boolean',
+  // },
+  // validate(schema, data) {
+  //   // console.log(schema, data)
+  //   if (schema === true) return true
+  //   else return schema.length === 6
+  // },
 })
 const validate = ajv.compile(schema)
 const valid = validate({
