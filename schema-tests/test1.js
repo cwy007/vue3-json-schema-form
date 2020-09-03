@@ -1,5 +1,6 @@
 // Node.js require:
 const Ajv = require('ajv')
+const localize = require('ajv-i18n')
 
 const schema = {
   type: 'object',
@@ -37,11 +38,11 @@ const ajv = new Ajv() // options can be passed, e.g. {allErrors: true}
 //   return data === 'haha'
 // })
 ajv.addKeyword('test', {
-  macro() {
-    return {
-      minLength: 10,
-    }
-  },
+  // macro() {
+  //   return {
+  //     minLength: 10,
+  //   }
+  // },
   // compile(sch, parentSchema) {
   //   console.log(sch, parentSchema)
   //   // return true
@@ -50,11 +51,21 @@ ajv.addKeyword('test', {
   // metaSchema: {
   //   type: 'boolean',
   // },
-  // validate(schema, data) {
-  //   // console.log(schema, data)
-  //   if (schema === true) return true
-  //   else return schema.length === 6
-  // },
+  validate: function fun(schema, data) {
+    // console.log(schema, data)
+
+    fun.errors = [
+      {
+        keyword: 'test',
+        dataPath: '.name',
+        schemaPath: '#/properties/name/test',
+        params: { keyword: 'test' },
+        message: 'hello error message',
+      },
+    ]
+
+    return false
+  },
 })
 const validate = ajv.compile(schema)
 const valid = validate({
@@ -63,4 +74,7 @@ const valid = validate({
   pets: ['mimi', 12],
   isWorker: true,
 })
-if (!valid) console.log(validate.errors)
+if (!valid) {
+  localize.zh(validate.errors)
+  console.log(validate.errors)
+}
