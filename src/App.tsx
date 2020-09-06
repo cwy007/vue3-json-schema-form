@@ -1,48 +1,54 @@
-import { createApp, defineComponent, h, reactive, ref } from 'vue'
+import { createApp, defineComponent, h, reactive, ref, Ref } from 'vue'
 
-import HelloWorld from './components/HelloWorld'
+import { createUseStyles } from 'vue-jss'
 
-const img = require('./assets/logo.png') // eslint-disable-line
+import MonacoEditor from './components/MonacoEditor'
 
-function renderHelloWorld(num: number) {
-  return <HelloWorld age={num} />
+function toJson(data: any) {
+  return JSON.stringify(data, null, 2)
 }
+
+const schema = {
+  type: 'string',
+}
+
+const useStyles = createUseStyles({
+  editor: {
+    minHeight: 400,
+  },
+})
 
 export default defineComponent({
   setup() {
-    const state = reactive({
-      name: 'jokcy',
-    })
+    const schemaRef: Ref<any> = ref(schema)
 
-    const numberRef = ref(1)
+    const handleCodeChange = (code: string) => {
+      let schema: any
+      try {
+        schema = JSON.parse(code)
+      } catch (err) {
+        // some thing
+      }
+      schemaRef.value = schema
+    }
 
-    // setInterval(() => {
-    //   state.name += '1'
-    //   numberRef.value += 1
-    // }, 1000)
-
-    // const number = numberRef.value
+    const classesRef = useStyles()
 
     return () => {
-      const number = numberRef.value
-      console.log(state.name)
+      const calsses = classesRef.value
+
+      const code = toJson(schemaRef.value)
 
       return (
-        <div id="app">
-          <img src={img} alt="Vue logo" />
-          <p>{state.name + number}</p>
-          <input type="text" v-model={state.name} />
-          {renderHelloWorld(124)}
+        <div>
+          <MonacoEditor
+            code={code}
+            onChange={handleCodeChange}
+            title="Schema"
+            class={calsses.editor}
+          />
         </div>
       )
-
-      // return h('div', { id: 'app' }, [
-      //   h('img', {
-      //     alt: 'Vue logo',
-      //     src: img,
-      //   }),
-      //   h('p', state.name + number),
-      // ])
     }
   },
 })
