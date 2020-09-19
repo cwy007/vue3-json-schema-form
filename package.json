@@ -37,6 +37,7 @@
     "eslint-plugin-vue": "^7.0.0-0",
     "lint-staged": "^9.5.0",
     "monaco-editor": "^0.20.0",
+    "monaco-editor-webpack-plugin": "^1.9.1",
     "prettier": "^1.19.1",
     "typescript": "~3.9.3",
     "vue-jest": "^5.0.0-0"

@@ -1,8 +1,8 @@
 export default {
   name: 'Demo',
   schema: {
-    type: 'string',
+    type: 'number',
   },
   uiSchema: {},
-  default: 'jokcy',
+  default: 1,
 }
