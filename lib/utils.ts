@@ -36,7 +36,6 @@ export function validateData(schema: any, data: any) {
 }
 
 // function resolveSchema(schema: any, data: any = {}) {}
-
 export function resolveSchema(schema: Schema, rootSchema = {}, formData = {}) {
   if (hasOwnProperty(schema, '$ref')) {
     return resolveReference(schema, rootSchema, formData)

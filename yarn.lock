@@ -1286,10 +1286,34 @@
     jest-diff "^25.2.1"
     pretty-format "^25.2.1"
 
+"@types/json-schema-merge-allof@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.npm.taobao.org/@types/json-schema-merge-allof/download/@types/json-schema-merge-allof-0.6.0.tgz#0f587d8a3bcb41a55ef2e91d3ba96430c9bc1813"
+  integrity sha1-D1h9ijvLQaVe8ukdO6lkMMm8GBM=
+  dependencies:
+    "@types/json-schema" "*"
+
+"@types/json-schema@*":
+  version "7.0.6"
+  resolved "https://registry.npm.taobao.org/@types/json-schema/download/@types/json-schema-7.0.6.tgz#f4c7ec43e81b319a9815115031709f26987891f0"
+  integrity sha1-9MfsQ+gbMZqYFRFQMXCfJph4kfA=
+
 "@types/json-schema@^7.0.3", "@types/json-schema@^7.0.4", "@types/json-schema@^7.0.5":
   version "7.0.5"
   resolved "https://registry.npm.taobao.org/@types/json-schema/download/@types/json-schema-7.0.5.tgz#dcce4430e64b443ba8945f0290fb564ad5bac6dd"
   integrity sha1-3M5EMOZLRDuolF8CkPtWStW6xt0=
+
+"@types/lodash.union@^4.6.6":
+  version "4.6.6"
+  resolved "https://registry.npm.taobao.org/@types/lodash.union/download/@types/lodash.union-4.6.6.tgz#2f77f2088326ed147819e9e384182b99aae8d4b0"
+  integrity sha1-L3fyCIMm7RR4GenjhBgrmaro1LA=
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash@*":
+  version "4.14.161"
+  resolved "https://registry.npm.taobao.org/@types/lodash/download/@types/lodash-4.14.161.tgz#a21ca0777dabc6e4f44f3d07f37b765f54188b18"
+  integrity sha1-ohygd32rxuT0Tz0H83t2X1QYixg=
 
 "@types/mime@*":
   version "2.0.3"
@@ -3127,6 +3151,11 @@ cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
   dependencies:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
+
+circular-dependency-plugin@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.npm.taobao.org/circular-dependency-plugin/download/circular-dependency-plugin-5.2.0.tgz#e09dbc2dd3e2928442403e2d45b41cea06bc0a93"
+  integrity sha1-4J28LdPikoRCQD4tRbQc6ga8CpM=
 
 class-utils@^0.3.5:
   version "0.3.6"
