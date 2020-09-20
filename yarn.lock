@@ -1924,10 +1924,10 @@
   resolved "https://registry.npm.taobao.org/@vue/shared/download/@vue/shared-3.0.0-rc.8.tgz?cache=0&sync_timestamp=1598366070268&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vue%2Fshared%2Fdownload%2F%40vue%2Fshared-3.0.0-rc.8.tgz#d6b80e14c202c37d9f1953965a1517eab46c1d3b"
   integrity sha1-1rgOFMICw32fGVOWWhUX6rRsHTs=
 
-"@vue/test-utils@^2.0.0-0":
-  version "2.0.0-beta.2"
-  resolved "https://registry.npm.taobao.org/@vue/test-utils/download/@vue/test-utils-2.0.0-beta.2.tgz#1b57245c0dab325cc1d9133d74738f063a24589c"
-  integrity sha1-G1ckXA2rMlzB2RM9dHOPBjokWJw=
+"@vue/test-utils@2.0.0-beta.5":
+  version "2.0.0-beta.5"
+  resolved "https://registry.npm.taobao.org/@vue/test-utils/download/@vue/test-utils-2.0.0-beta.5.tgz?cache=0&sync_timestamp=1600341259717&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vue%2Ftest-utils%2Fdownload%2F%40vue%2Ftest-utils-2.0.0-beta.5.tgz#c5980e3e6d22a1811483577bcfbcc2c4493c4a73"
+  integrity sha1-xZgOPm0ioYEUg1d7z7zCxEk8SnM=
 
 "@vue/web-component-wrapper@^1.2.0":
   version "1.2.0"
