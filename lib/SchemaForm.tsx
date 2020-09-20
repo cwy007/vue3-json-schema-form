@@ -5,6 +5,8 @@ import { Schema, SchemaTypes } from './types'
 import SchemaItem from './SchemaItem'
 import { SchemaFormContextKey } from './context'
 
+type A = typeof SchemaItem
+
 export default defineComponent({
   props: {
     schema: {

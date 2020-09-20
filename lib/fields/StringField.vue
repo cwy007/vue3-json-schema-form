@@ -13,7 +13,7 @@ export default {
 declare const props: {
   value: any
   onChange: (v: string) => void
-  schame: Schema
+  schema: Schema
 }
 
 export const handleChange = (e: any) => {
