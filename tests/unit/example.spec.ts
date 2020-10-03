@@ -1,5 +1,12 @@
-import { shallowMount } from '@vue/test-utils'
+import { mount, shallowMount } from '@vue/test-utils'
 import { defineComponent, h } from 'vue'
+
+const Test = defineComponent({
+  name: 'Test',
+  setup() {
+    return () => h('span', '123')
+  },
+})
 
 const HelloWorld = defineComponent({
   name: 'HelloWorld',
@@ -8,68 +15,26 @@ const HelloWorld = defineComponent({
   },
   setup(props) {
     return () => {
-      return h('div', props.msg)
+      return h('div', [h(Test)])
     }
   },
 })
 
 describe('HelloWorld.vue', () => {
-  beforeEach(() => {
-    console.log('before each')
-  })
-
-  afterEach(() => {
-    console.log('after each')
-  })
-
-  beforeAll(() => {
-    console.log('before All')
-  })
-
-  afterAll(() => {
-    console.log('after All')
-  })
   it('renders props.msg when passed', async () => {
     const msg = 'new message'
-    const wrapper = shallowMount(HelloWorld as any, {
-      props: { msg },
+    const swrapper = shallowMount(HelloWorld as any)
+    const wrapper = mount(HelloWorld)
+
+    const ss = swrapper.find('span')
+    const s = wrapper.find('span')
+
+    const helloWorld = wrapper.findComponent({
+      name: 'HelloWrold',
     })
-    // setTimeout(() => {
-    //   expect(wrapper.text()).toEqual(msg)
-    //   done()
-    // }, 100)
-    // return new Promise((resolve) => {
-    //   expect(wrapper.text()).toEqual('123')
-    //   resolve()
-    // })
-    await wrapper.setProps({
-      msg: '123',
-    })
-    expect(wrapper.text()).toEqual('123')
-  })
 
-  it('should work', () => {
-    expect(1 + 1).toBe(2)
-  })
-})
+    console.log(ss, s)
 
-describe('another', () => {
-  beforeEach(() => {
-    console.log('before each111')
-  })
-
-  afterEach(() => {
-    console.log('after each111')
-  })
-
-  beforeAll(() => {
-    console.log('before All111')
-  })
-
-  afterAll(() => {
-    console.log('after All111')
-  })
-  it('should work', () => {
-    expect(1 + 1).toBe(2)
+    // expect(wrapper.text()).toEqual(msg)
   })
 })
