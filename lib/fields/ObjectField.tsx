@@ -1,4 +1,4 @@
-import { defineComponent } from 'vue'
+import { defineComponent, DefineComponent } from 'vue'
 
 import { FiledPropsDefine, CommonFieldType } from '../types'
 import { isObject } from '../utils'
@@ -19,6 +19,8 @@ const schema = {
     },
   },
 }
+
+type A = DefineComponent<typeof FiledPropsDefine, {}, {}>
 
 export default defineComponent({
   name: 'ObjectField',

@@ -3,7 +3,7 @@ const CircularDependencyPlugin = require('circular-dependency-plugin')
 
 module.exports = {
   configureWebpack(config) {
-    console.log(config.plugins)
+    // console.log(config.plugins)
   },
   chainWebpack(config) {
     config.plugin('monaco').use(new MonacoWebpackPlugin())
