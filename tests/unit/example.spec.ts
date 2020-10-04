@@ -20,5 +20,10 @@ describe('JsonSchemaFrom', () => {
 
     const numberFiled = wrapper.findComponent(NumberFiled)
     expect(numberFiled.exists()).toBeTruthy()
+    // await numberFiled.props('onChange')('123')
+    const input = numberFiled.find('input')
+    input.element.value = '123'
+    input.trigger('input')
+    expect(value).toBe(123)
   })
 })
