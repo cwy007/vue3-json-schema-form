@@ -5,7 +5,10 @@
 <script lang="ts" setup="props">
 import { FiledPropsDefine, Schema } from '../types'
 
+console.log('------------->')
+
 export default {
+  name: 'NumberFeild',
   props: FiledPropsDefine,
 }
 

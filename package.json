@@ -46,7 +46,7 @@
     "monaco-editor-webpack-plugin": "^1.9.1",
     "prettier": "^1.19.1",
     "typescript": "~3.9.3",
-    "vue-jest": "^5.0.0-0"
+    "vue-jest": "^5.0.0-alpha.4"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"

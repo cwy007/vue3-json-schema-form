@@ -10835,10 +10835,10 @@ vue-jest@^3.0.5:
     tsconfig "^7.0.0"
     vue-template-es2015-compiler "^1.6.0"
 
-vue-jest@^5.0.0-0:
-  version "5.0.0-alpha.3"
-  resolved "https://registry.npm.taobao.org/vue-jest/download/vue-jest-5.0.0-alpha.3.tgz#37eacb0672640c4eb0f01f966a20a87bf4105d20"
-  integrity sha1-N+rLBnJkDE6w8B+WaiCoe/QQXSA=
+vue-jest@^5.0.0-alpha.4:
+  version "5.0.0-alpha.4"
+  resolved "https://registry.npm.taobao.org/vue-jest/download/vue-jest-5.0.0-alpha.4.tgz?cache=0&sync_timestamp=1600474292367&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue-jest%2Fdownload%2Fvue-jest-5.0.0-alpha.4.tgz#77fb581b476b5a9c228111a17cc14eb0be2ba297"
+  integrity sha1-d/tYG0drWpwigRGhfMFOsL4ropc=
   dependencies:
     "@babel/plugin-transform-modules-commonjs" "^7.2.0"
     chalk "^2.1.0"
