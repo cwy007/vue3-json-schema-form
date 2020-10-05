@@ -6,6 +6,7 @@ const TextWidget: CommonWidgetDefine = defineComponent({
   setup(props) {
     const handleChange = (e: any) => {
       console.log(e)
+      e.target.value = props.value
       props.onChange(e.target.value)
     }
     return () => {
