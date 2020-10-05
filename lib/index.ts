@@ -11,4 +11,6 @@ import ThemeProvider from './theme'
 
 export default SchemaFrom
 
+export * from './types'
+
 export { NumberFiled, StringField, ArrayField, SelectionWidget, ThemeProvider }
