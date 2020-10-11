@@ -23,6 +23,7 @@ const schema = {
       items: [
         {
           type: 'string',
+          maxLength: 2,
         },
         {
           type: 'number',
