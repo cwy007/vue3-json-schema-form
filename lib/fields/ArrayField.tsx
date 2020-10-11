@@ -164,7 +164,7 @@ export default defineComponent({
     return () => {
       // const SelectionWidget = context.theme.widgets.SelectionWidget
       const SelectionWidget = SelectionWidgetRef.value
-      const { schema, rootSchema, value } = props
+      const { schema, rootSchema, value, errorSchema } = props
 
       const SchemaItem = context.SchemaItem
 
@@ -180,6 +180,7 @@ export default defineComponent({
             key={index}
             rootSchema={rootSchema}
             value={arr[index]}
+            errorSchema={errorSchema[index] || {}}
             onChange={(v: any) => handleArrayItemChange(v, index)}
           />
         ))
@@ -197,6 +198,7 @@ export default defineComponent({
             >
               <SchemaItem
                 schema={schema.items as Schema}
+                errorSchema={errorSchema[index] || {}}
                 value={v}
                 key={index}
                 rootSchema={rootSchema}
@@ -216,6 +218,8 @@ export default defineComponent({
             onChange={props.onChange}
             value={props.value}
             options={options}
+            errors={errorSchema.__errors}
+            schema={schema}
           />
         )
       }

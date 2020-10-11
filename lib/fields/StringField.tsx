@@ -15,11 +15,17 @@ export default defineComponent({
     const TextWidgetRef = getWidget(CommonWidgetNames.TextWidget)
 
     return () => {
-      const { schema, rootSchema, ...rest } = props
+      const { rootSchema, errorSchema, ...rest } = props
 
       const TextWidget = TextWidgetRef.value
 
-      return <TextWidget {...rest} onChange={handleChange} />
+      return (
+        <TextWidget
+          {...rest}
+          errors={errorSchema.__errors}
+          onChange={handleChange}
+        />
+      )
 
       // return (
       //   <input type="text" value={props.value as any} onInput={handleChange} />

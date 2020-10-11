@@ -17,7 +17,7 @@ interface ErrorSchemaObject {
 }
 
 export type ErrorSchema = ErrorSchemaObject & {
-  __errors: string[]
+  __errors?: string[]
 }
 function toErrorSchema(errors: TransformedErrorObject[]) {
   if (errors.length < 1) return {}

@@ -6,17 +6,21 @@ export default {
     required: ['firstName', 'lastName'],
     properties: {
       firstName: {
+        title: 'firstName',
         type: 'string',
         default: 'Chuck',
       },
       lastName: {
+        title: 'lastName',
         type: 'string',
       },
       telephone: {
+        title: 'telephone',
         type: 'string',
         minLength: 10,
       },
       staticArray: {
+        title: 'staticArray',
         type: 'array',
         items: [
           {
@@ -28,6 +32,7 @@ export default {
         ],
       },
       singleTypeArray: {
+        title: 'singleTypeArray',
         type: 'array',
         items: {
           type: 'object',
@@ -42,6 +47,7 @@ export default {
         },
       },
       multiSelectArray: {
+        title: 'multiSelectArray',
         type: 'array',
         items: {
           type: 'string',
