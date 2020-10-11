@@ -1303,6 +1303,13 @@
   resolved "https://registry.npm.taobao.org/@types/json-schema/download/@types/json-schema-7.0.5.tgz#dcce4430e64b443ba8945f0290fb564ad5bac6dd"
   integrity sha1-3M5EMOZLRDuolF8CkPtWStW6xt0=
 
+"@types/lodash.topath@^4.5.6":
+  version "4.5.6"
+  resolved "https://registry.npm.taobao.org/@types/lodash.topath/download/@types/lodash.topath-4.5.6.tgz#4b0ea9136afede167e0cbfc74abb7d95f5dc13e1"
+  integrity sha1-Sw6pE2r+3hZ+DL/HSrt9lfXcE+E=
+  dependencies:
+    "@types/lodash" "*"
+
 "@types/lodash.union@^4.6.6":
   version "4.6.6"
   resolved "https://registry.npm.taobao.org/@types/lodash.union/download/@types/lodash.union-4.6.6.tgz#2f77f2088326ed147819e9e384182b99aae8d4b0"
@@ -1516,21 +1523,7 @@
   resolved "https://registry.npm.taobao.org/@vue/babel-helper-vue-transform-on/download/@vue/babel-helper-vue-transform-on-1.0.0-rc.2.tgz#7246341f666e7c6e65b13da420e2ce85714fbbca"
   integrity sha1-ckY0H2ZufG5lsT2kIOLOhXFPu8o=
 
-"@vue/babel-plugin-jsx@^1.0.0-0":
-  version "1.0.0-rc.3"
-  resolved "https://registry.npm.taobao.org/@vue/babel-plugin-jsx/download/@vue/babel-plugin-jsx-1.0.0-rc.3.tgz?cache=0&sync_timestamp=1600074425391&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vue%2Fbabel-plugin-jsx%2Fdownload%2F%40vue%2Fbabel-plugin-jsx-1.0.0-rc.3.tgz#ab477ee95c764fbe68842a2eddd474f122e70ac6"
-  integrity sha1-q0d+6Vx2T75ohCou3dR08SLnCsY=
-  dependencies:
-    "@babel/helper-module-imports" "^7.0.0"
-    "@babel/plugin-syntax-jsx" "^7.0.0"
-    "@babel/traverse" "^7.0.0"
-    "@babel/types" "^7.0.0"
-    "@vue/babel-helper-vue-transform-on" "^1.0.0-rc.2"
-    camelcase "^6.0.0"
-    html-tags "^3.1.0"
-    svg-tags "^1.0.0"
-
-"@vue/babel-plugin-jsx@^1.0.0-rc.3":
+"@vue/babel-plugin-jsx@^1.0.0-0", "@vue/babel-plugin-jsx@^1.0.0-rc.3":
   version "1.0.0-rc.3"
   resolved "https://registry.npm.taobao.org/@vue/babel-plugin-jsx/download/@vue/babel-plugin-jsx-1.0.0-rc.3.tgz?cache=0&sync_timestamp=1600074521852&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vue%2Fbabel-plugin-jsx%2Fdownload%2F%40vue%2Fbabel-plugin-jsx-1.0.0-rc.3.tgz#ab477ee95c764fbe68842a2eddd474f122e70ac6"
   integrity sha1-q0d+6Vx2T75ohCou3dR08SLnCsY=
@@ -7251,6 +7244,11 @@ lodash.sortby@^4.7.0:
   version "4.7.0"
   resolved "https://registry.npm.taobao.org/lodash.sortby/download/lodash.sortby-4.7.0.tgz#edd14c824e2cc9c1e0b0a1b42bb5210516a42438"
   integrity sha1-7dFMgk4sycHgsKG0K7UhBRakJDg=
+
+lodash.topath@^4.5.2:
+  version "4.5.2"
+  resolved "https://registry.npm.taobao.org/lodash.topath/download/lodash.topath-4.5.2.tgz#3616351f3bba61994a0931989660bd03254fd009"
+  integrity sha1-NhY1Hzu6YZlKCTGYlmC9AyVP0Ak=
 
 lodash.transform@^4.6.0:
   version "4.6.0"

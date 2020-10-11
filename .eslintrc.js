@@ -19,6 +19,7 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': 'off',
     'no-prototype-builtins': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    'vue/no-mutating-props': 'off',
   },
   overrides: [
     {
