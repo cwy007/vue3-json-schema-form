@@ -81,6 +81,7 @@ export default defineComponent({
       schemaCode: string
       dataCode: string
       uiSchemaCode: string
+      customValidate: ((d: any, e: any) => void) | undefined
     } = reactive({
       schema: null,
       data: {},
@@ -88,17 +89,19 @@ export default defineComponent({
       schemaCode: '',
       dataCode: '',
       uiSchemaCode: '',
+      customValidate: undefined,
     })
 
     watchEffect(() => {
       const index = selectedRef.value
-      const d = demos[index]
+      const d: any = demos[index]
       demo.schema = d.schema
       demo.data = d.default
       demo.uiSchema = d.uiSchema
       demo.schemaCode = toJson(d.schema)
       demo.dataCode = toJson(d.default)
       demo.uiSchemaCode = toJson(d.uiSchema)
+      demo.customValidate = d.customValidate
     })
 
     const methodRef: Ref<any> = ref()
@@ -187,6 +190,7 @@ export default defineComponent({
                   value={demo.data}
                   contextRef={contextRef}
                   ref={nameRef}
+                  customValidate={demo.customValidate}
                 />
               </ThemeProvider>
               {/* <SchemaForm
