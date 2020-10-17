@@ -18,6 +18,7 @@ const NumberWidget: CommonWidgetDefine = withFormItem(
             type="number"
             value={props.value as any}
             onInput={handleChange}
+            min={10}
           />
         )
       }

@@ -5,6 +5,7 @@ import { FiledPropsDefine, Schema, SelectionWidgetNames } from '../types'
 
 import { useVJSFContext } from '../context'
 import { getWidget } from '../theme'
+import { isObject } from 'lib/utils'
 
 // import SelectionWidget from '../widgets/Selection'
 
@@ -164,7 +165,7 @@ export default defineComponent({
     return () => {
       // const SelectionWidget = context.theme.widgets.SelectionWidget
       const SelectionWidget = SelectionWidgetRef.value
-      const { schema, rootSchema, value, errorSchema } = props
+      const { schema, rootSchema, value, errorSchema, uiSchema } = props
 
       const SchemaItem = context.SchemaItem
 
@@ -174,16 +175,23 @@ export default defineComponent({
       if (isMultiType) {
         const items: Schema[] = schema.items as any
         const arr = Array.isArray(value) ? value : []
-        return items.map((s: Schema, index: number) => (
-          <SchemaItem
-            schema={s}
-            key={index}
-            rootSchema={rootSchema}
-            value={arr[index]}
-            errorSchema={errorSchema[index] || {}}
-            onChange={(v: any) => handleArrayItemChange(v, index)}
-          />
-        ))
+        return items.map((s: Schema, index: number) => {
+          const itemsUiSchema = uiSchema.items
+          const us = Array.isArray(itemsUiSchema)
+            ? itemsUiSchema[index] || {}
+            : itemsUiSchema || {}
+          return (
+            <SchemaItem
+              schema={s}
+              uiSchema={us}
+              key={index}
+              rootSchema={rootSchema}
+              value={arr[index]}
+              errorSchema={errorSchema[index] || {}}
+              onChange={(v: any) => handleArrayItemChange(v, index)}
+            />
+          )
+        })
       } else if (!isSelect) {
         const arr = Array.isArray(value) ? value : []
 
@@ -198,6 +206,7 @@ export default defineComponent({
             >
               <SchemaItem
                 schema={schema.items as Schema}
+                uiSchema={(uiSchema.items as any) || {}}
                 errorSchema={errorSchema[index] || {}}
                 value={v}
                 key={index}
