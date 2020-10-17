@@ -6,6 +6,7 @@ import {
   watchEffect,
   watch,
   shallowRef,
+  ref,
 } from 'vue'
 
 import Ajv, { Options } from 'ajv'
@@ -19,15 +20,15 @@ import { validateFormData, ErrorSchema } from './validator'
 type A = typeof SchemaItem
 
 interface ContextRef {
-  doValidate: () => {
+  doValidate: () => Promise<{
     errors: any[]
     valid: boolean
-  }
+  }>
 }
 
 const defaultAjvOptions: Options = {
   allErrors: true,
-  jsonPointers: true,
+  // jsonPointers: true,
 }
 
 export default defineComponent({
@@ -79,30 +80,62 @@ export default defineComponent({
       })
     })
 
+    const validateResolveRef = ref()
+    const validateIndex = ref(0)
+
+    watch(
+      () => props.value,
+      () => {
+        if (validateResolveRef.value) {
+          doValidate()
+        }
+      },
+      { deep: true },
+    )
+
+    async function doValidate() {
+      console.log('start validate -------->')
+      const index = (validateIndex.value += 1)
+      const result = await validateFormData(
+        validatorRef.value,
+        props.value,
+        props.schema,
+        props.locale,
+        props.customValidate,
+      )
+
+      if (index !== validateIndex.value) return
+      console.log('end validate -------->')
+
+      errorSchemaRef.value = result.errorSchema
+
+      validateResolveRef.value(result)
+      validateResolveRef.value = undefined
+
+      // return result
+    }
+
     watch(
       () => props.contextRef,
       () => {
         if (props.contextRef) {
           props.contextRef.value = {
             doValidate() {
-              console.log('--------->')
-
-              // const valid = validatorRef.value.validate(
-              //   props.schema,
+              return new Promise((resolve) => {
+                validateResolveRef.value = resolve
+                doValidate()
+              })
+              // const result = await validateFormData(
+              //   validatorRef.value,
               //   props.value,
-              // ) as boolean
+              //   props.schema,
+              //   props.locale,
+              //   props.customValidate,
+              // )
 
-              const result = validateFormData(
-                validatorRef.value,
-                props.value,
-                props.schema,
-                props.locale,
-                props.customValidate,
-              )
+              // errorSchemaRef.value = result.errorSchema
 
-              errorSchemaRef.value = result.errorSchema
-
-              return result
+              // return result
             },
           }
         }
