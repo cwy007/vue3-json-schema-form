@@ -7,13 +7,19 @@ export default {
     properties: {
       pass1: {
         type: 'string',
-        minLength: 10,
+        // minLength: 10,
+        test: true,
         title: 'password',
       },
       pass2: {
         type: 'string',
         minLength: 10,
         title: 're try password',
+      },
+      color: {
+        type: 'string',
+        format: 'color',
+        title: 'Input Color',
       },
     },
   },

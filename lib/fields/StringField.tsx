@@ -13,7 +13,7 @@ export default defineComponent({
     }
 
     const TextWidgetRef = computed(() => {
-      const widgetRef = getWidget(CommonWidgetNames.TextWidget, props.uiSchema)
+      const widgetRef = getWidget(CommonWidgetNames.TextWidget, props)
       return widgetRef.value
     })
 
