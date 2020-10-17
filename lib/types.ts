@@ -95,6 +95,9 @@ export const CommonWidgetPropsDefine = {
     type: Object as PropType<Schema>,
     required: true,
   },
+  options: {
+    type: Object as PropType<{ [keys: string]: any }>,
+  },
 } as const
 
 export const SelectionWidgetPropsDefine = {
@@ -139,10 +142,12 @@ export interface Theme {
   }
 }
 
-export interface UISchema {
+export type UISchema = {
   widget?: string | CommonWidgetDefine
   properties?: {
     [key: string]: UISchema
   }
   items?: UISchema | UISchema[]
+} & {
+  [key: string]: any
 }

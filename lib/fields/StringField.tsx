@@ -1,4 +1,4 @@
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
 
 import { FiledPropsDefine, CommonWidgetNames } from '../types'
 import { getWidget } from '../theme'
@@ -12,7 +12,15 @@ export default defineComponent({
       props.onChange(v)
     }
 
-    const TextWidgetRef = getWidget(CommonWidgetNames.TextWidget)
+    const TextWidgetRef = computed(() => {
+      const widgetRef = getWidget(CommonWidgetNames.TextWidget, props.uiSchema)
+      return widgetRef.value
+    })
+
+    const widgetOptionsRef = computed(() => {
+      const { widget, properties, items, ...rest } = props.uiSchema
+      return rest
+    })
 
     return () => {
       const { rootSchema, errorSchema, ...rest } = props
@@ -24,6 +32,7 @@ export default defineComponent({
           {...rest}
           errors={errorSchema.__errors}
           onChange={handleChange}
+          options={widgetOptionsRef.value}
         />
       )
 
