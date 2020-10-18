@@ -3,6 +3,8 @@ import { defineComponent, h } from 'vue'
 
 import JsonSchemaForm, { NumberFiled, StringField } from '../../lib'
 
+import TestComponent from './utils/TestComponent'
+
 describe('ObjectFiled', () => {
   let schema: any
   beforeEach(() => {
@@ -20,7 +22,7 @@ describe('ObjectFiled', () => {
   })
 
   it('should render properties to correct fileds', async () => {
-    const wrapper = mount(JsonSchemaForm, {
+    const wrapper = mount(TestComponent, {
       props: {
         schema,
         value: {},
@@ -37,7 +39,7 @@ describe('ObjectFiled', () => {
 
   it('should change value when sub fields trigger onChange', async () => {
     let value: any = {}
-    const wrapper = mount(JsonSchemaForm, {
+    const wrapper = mount(TestComponent, {
       props: {
         schema,
         value: value,
@@ -61,7 +63,7 @@ describe('ObjectFiled', () => {
     let value: any = {
       name: '123',
     }
-    const wrapper = mount(JsonSchemaForm, {
+    const wrapper = mount(TestComponent, {
       props: {
         schema,
         value: value,
