@@ -1,7 +1,7 @@
 {
-  "name": "vue3-json-schema-form",
+  "name": "vjsf-imooc",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build:core": "TYPE=lib vue-cli-service build --target lib --name index --no-clean lib/index.ts",
@@ -9,8 +9,16 @@
     "build": "rimraf dist && npm run build:core && npm run build:theme",
     "test:unit": "vue-cli-service test:unit",
     "test:unit:cov": "vue-cli-service test:unit --coverage",
+    "prepublishOnly": "npm run build",
     "lint": "vue-cli-service lint"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.common.js",
   "dependencies": {
     "ajv": "^6.12.4",
     "ajv-errors": "^1.0.1",

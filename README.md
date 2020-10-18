@@ -1,5 +1,7 @@
 # API 设计
 
+![Coverage](https://img.shields.io/codecov/c/gh/Jokcy/vjsf-imooc/branch/11-4)
+
 ```jsx
 <JsonSchemaForm
   schema={schema}
