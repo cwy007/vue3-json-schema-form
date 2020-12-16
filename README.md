@@ -1,29 +1,30 @@
 # vue3-json-schema-form
 
+a form generator based on jsonschema for vue3
+
 ## Project setup
-```
+
+```bash
 npm install
-```
-
-### Compiles and hot-reloads for development
-```
 npm run serve
-```
-
-### Compiles and minifies for production
-```
 npm run build
-```
-
-### Run your unit tests
-```
 npm run test:unit
-```
-
-### Lints and fixes files
-```
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## git
+
+```bash
+# 查看远程分支
+git granch -r
+# 查看所有分支
+git branch -a
+
+# 查看第3章的分支
+gb -r | grep origin/3
+```
+
+## 参考
+
+* [pure-vue/vue3-jsonschema-from](https://github.com/pure-vue/vue3-jsonschema-from)
+* [prettier](https://prettier.io/)
