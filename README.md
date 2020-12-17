@@ -96,6 +96,16 @@ git branch -a
 gb -r | grep origin/3
 ```
 
+## 目录说明
+
+```bash
+# ./lib/ 文件夹下是组件库的代码，也就是完成后需要打包发布的代码
+./lib/
+# ./src/ 文件夹下的代码是演示的代码，在开发时使用
+./src/
+
+```
+
 ## 参考
 
 - [pure-vue/vue3-jsonschema-from](https://github.com/pure-vue/vue3-jsonschema-from)
@@ -107,3 +117,5 @@ gb -r | grep origin/3
 - [ajv-formats](https://github.com/ajv-validator/ajv-formats)
 - [vue-jss](https://github.com/pure-vue/vue-jss)
 - [monaco-editor](https://github.com/microsoft/monaco-editor)
+- [Announcing Import Type](https://flow.org/blog/2015/02/18/Import-Types/)
+- [import type 含义](https://segmentfault.com/q/1010000015563961)
