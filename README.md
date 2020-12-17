@@ -33,3 +33,5 @@ gb -r | grep origin/3
 * [v3.cn.vuejs.org](https://v3.cn.vuejs.org/guide/installation.html)
 * [JSX for vue3](https://github.com/vuejs/jsx-next)
 * [ajv-formats](https://github.com/ajv-validator/ajv-formats)
+* [vue-jss](https://github.com/pure-vue/vue-jss)
+* [monaco-editor](https://github.com/microsoft/monaco-editor)
