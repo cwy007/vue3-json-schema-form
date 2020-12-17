@@ -28,3 +28,7 @@ gb -r | grep origin/3
 
 * [pure-vue/vue3-jsonschema-from](https://github.com/pure-vue/vue3-jsonschema-from)
 * [prettier](https://prettier.io/)
+* [Ajv: Another JSON Schema Validator](https://ajv.js.org)
+* [json-schema](https://json-schema.org/)
+* [v3.cn.vuejs.org](https://v3.cn.vuejs.org/guide/installation.html)
+* [JSX for vue3](https://github.com/vuejs/jsx-next)
