@@ -1,6 +1,7 @@
 // Node.js require:
 const Ajv = require('ajv').default
 const addFormats = require('ajv-formats')
+const localize = require('ajv-i18n');
 
 const schema = {
   type: 'object',
@@ -8,7 +9,7 @@ const schema = {
     name: {
       type: 'string',
       // format: 'test',
-      test: true
+      test: 'true'
     },
     age: {
       type: 'number'
@@ -36,22 +37,29 @@ ajv.addFormat('test', (data) => {
 })
 ajv.addKeyword({
   keyword: "test",
-  validate(schema, data) {
+  validate: function foo(schema, data) {
     console.log(schema, data)
-    return true
+    foo.errors = [{
+      keyword: 'test',
+      dataPath: '/name',
+      schemaPath: '#/properties/name/test',
+      params: {},
+      message: '验证未通过，测试 ajv 自定义错误信息，i18n'
+    }]
+    return false
   },
-  compile(sch, parentSchema) {
-    console.log(sch, parentSchema)
-    return () => true
-  },
-  macro() {
-    return {
-      minLength: 10,
-    }
-  },
+  // compile(sch, parentSchema) {
+  //   console.log(sch, parentSchema)
+  //   return () => true
+  // },
+  // macro() {
+  //   return {
+  //     minLength: 10,
+  //   }
+  // },
   metaSchema: {
     // schema to validate keyword value
-    type: "boolean",
+    type: "string",
   },
   // errors: false,
 })
@@ -65,6 +73,9 @@ const valid = validate({
   ],
   isWorker: true
 })
-if (!valid) console.log(validate.errors)
 
+if (!valid) {
+  localize.zh(validate.errors)
+  console.log(validate.errors)
+}
 // node schema-tests/test1.js
