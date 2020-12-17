@@ -9,7 +9,11 @@ const schema = {
     name: {
       type: 'string',
       // format: 'test',
-      test: 'true'
+      test: 'true',
+      errorMessage: {
+        type: '必须是字符串',
+        test: '自定义关键字验证 test 失败了'
+      }
     },
     age: {
       type: 'number'
@@ -27,8 +31,10 @@ const schema = {
   required: ['name', 'age']
 }
 
-const ajv = new Ajv() // options can be passed, e.g. {allErrors: true}
+const ajv = new Ajv({ allErrors: true }) // options can be passed, e.g. {allErrors: true}
 addFormats(ajv)
+require("ajv-errors")(ajv /*, {singleError: true} */)
+
 // 自定义format: 'test'
 // https://ajv.js.org/docs/api.html#api-addformat
 ajv.addFormat('test', (data) => {
@@ -46,17 +52,17 @@ ajv.addKeyword({
       params: {},
       message: '验证未通过，测试 ajv 自定义错误信息，i18n'
     }]
-    return false
+    return true
   },
   // compile(sch, parentSchema) {
   //   console.log(sch, parentSchema)
   //   return () => true
   // },
-  // macro() {
-  //   return {
-  //     minLength: 10,
-  //   }
-  // },
+  macro() {
+    return {
+      minLength: 10,
+    }
+  },
   metaSchema: {
     // schema to validate keyword value
     type: "string",
@@ -65,7 +71,7 @@ ajv.addKeyword({
 })
 const validate = ajv.compile(schema)
 const valid = validate({
-  name: 'Jocky@xxx.com',
+  name: 1234567890,
   age: 18,
   pets: [
     'mini',
