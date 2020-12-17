@@ -1,11 +1,13 @@
 // Node.js require:
 const Ajv = require('ajv').default
+const addFormats = require('ajv-formats')
 
 const schema = {
   type: 'object',
   properties: {
     name: {
-      type: 'string'
+      type: 'string',
+      format: 'email',
     },
     age: {
       type: 'number'
@@ -24,9 +26,10 @@ const schema = {
 }
 
 const ajv = new Ajv() // options can be passed, e.g. {allErrors: true}
+addFormats(ajv)
 const validate = ajv.compile(schema)
 const valid = validate({
-  name: 'Jocky',
+  name: 'Jocky@xxx.com',
   age: 18,
   pets: [
     'mini',
