@@ -7,7 +7,8 @@ const schema = {
   properties: {
     name: {
       type: 'string',
-      format: 'email',
+      // format: 'test',
+      test: true
     },
     age: {
       type: 'number'
@@ -27,6 +28,33 @@ const schema = {
 
 const ajv = new Ajv() // options can be passed, e.g. {allErrors: true}
 addFormats(ajv)
+// 自定义format: 'test'
+// https://ajv.js.org/docs/api.html#api-addformat
+ajv.addFormat('test', (data) => {
+  console.log(data, '---------------')
+  return data === 'haha'
+})
+ajv.addKeyword({
+  keyword: "test",
+  validate(schema, data) {
+    console.log(schema, data)
+    return true
+  },
+  compile(sch, parentSchema) {
+    console.log(sch, parentSchema)
+    return () => true
+  },
+  macro() {
+    return {
+      minLength: 10,
+    }
+  },
+  metaSchema: {
+    // schema to validate keyword value
+    type: "boolean",
+  },
+  // errors: false,
+})
 const validate = ajv.compile(schema)
 const valid = validate({
   name: 'Jocky@xxx.com',

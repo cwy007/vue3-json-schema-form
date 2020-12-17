@@ -32,3 +32,4 @@ gb -r | grep origin/3
 * [json-schema](https://json-schema.org/)
 * [v3.cn.vuejs.org](https://v3.cn.vuejs.org/guide/installation.html)
 * [JSX for vue3](https://github.com/vuejs/jsx-next)
+* [ajv-formats](https://github.com/ajv-validator/ajv-formats)
