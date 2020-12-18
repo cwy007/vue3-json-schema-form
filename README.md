@@ -119,3 +119,25 @@ gb -r | grep origin/3
 - [monaco-editor](https://github.com/microsoft/monaco-editor)
 - [Announcing Import Type](https://flow.org/blog/2015/02/18/Import-Types/)
 - [import type 含义](https://segmentfault.com/q/1010000015563961)
+- Uncaught Error: Unexpected usage
+
+  ```js
+  // monaco-editor 报错信息
+  Error: Unexpected usage
+      at EditorSimpleWorker.loadForeignModule (editorSimpleWorker.js?ccf6:459)
+      at eval (webWorker.js?af50:38)
+      at eval (errors.js?fdcc:12)
+
+  // 解决方法
+  // 添加 vue.config.js 文件
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin')
+
+  module.exports = {
+    configureWebpack: {
+      plugins: [new MonacoWebpackPlugin()],
+    },
+  }
+  ```
+
+  - [解决方法](https://github.com/microsoft/monaco-editor/blob/master/docs/integrate-esm.md#option-1-using-the-monaco-editor-loader-plugin)

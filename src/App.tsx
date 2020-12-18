@@ -5,6 +5,7 @@ import MonacoEditor from './components/MonacoEditor'
 
 import demos from './demos'
 
+// 导入组件库
 import SchemaForm from '../lib'
 
 // TODO: 在lib中export
@@ -15,6 +16,7 @@ function toJson(data: any) {
   return JSON.stringify(data, null, 2)
 }
 
+// css in js
 const useStyles = createUseStyles({
   container: {
     display: 'flex',
@@ -69,8 +71,10 @@ const useStyles = createUseStyles({
   },
 })
 
+// implementation
 export default defineComponent({
   setup() {
+    // tab switch
     const selectedRef: Ref<number> = ref(0)
 
     const demo: {
@@ -89,8 +93,10 @@ export default defineComponent({
       uiSchemaCode: '',
     })
 
+    // 数据监听，确定 demo 的当前值
     watchEffect(() => {
       const index = selectedRef.value
+      // demos is test data provide by lib user
       const d = demos[index]
       demo.schema = d.schema
       demo.data = d.default
@@ -102,6 +108,7 @@ export default defineComponent({
 
     const methodRef: Ref<any> = ref()
 
+    // vue-jss lib
     const classesRef = useStyles()
 
     const handleChange = (v: any) => {
@@ -109,14 +116,15 @@ export default defineComponent({
       demo.dataCode = toJson(v)
     }
 
+    // closure 闭包 demo
     function handleCodeChange(
-      filed: 'schema' | 'data' | 'uiSchema',
+      field: 'schema' | 'data' | 'uiSchema',
       value: string,
     ) {
       try {
         const json = JSON.parse(value)
-        demo[filed] = json
-        ;(demo as any)[`${filed}Code`] = value
+        demo[field] = json
+        ;(demo as any)[`${field}Code`] = value
       } catch (err) {
         // some thing
       }
@@ -151,7 +159,8 @@ export default defineComponent({
                 </button>
               ))}
             </div>
-          </div>
+          </div>{' '}
+          {/* /.menu */}
           <div class={classes.content}>
             <div class={classes.code}>
               <MonacoEditor
@@ -174,7 +183,9 @@ export default defineComponent({
                   title="Value"
                 />
               </div>
+              {/* /.uiAndValue */}
             </div>
+            {/* /.code */}
             <div class={classes.form}>
               <SchemaForm />
               {/* <SchemaForm

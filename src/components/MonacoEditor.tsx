@@ -5,9 +5,9 @@ import {
   watch,
   onBeforeMount,
   shallowRef,
+  PropType,
 } from 'vue'
 import * as Monaco from 'monaco-editor'
-import { PropType } from 'vue'
 import { createUseStyles } from 'vue-jss'
 
 const useStyles = createUseStyles({
@@ -27,6 +27,7 @@ const useStyles = createUseStyles({
   },
 })
 
+// implementation
 export default defineComponent({
   props: {
     code: {
