@@ -2,6 +2,7 @@ import { defineComponent, PropType } from 'vue'
 
 import { Schema, SchemaTypes } from './types'
 import NumberField from './fields/NumberField'
+// import StringField from './fields/StringField.vue'
 import StringField from './fields/StringField'
 
 export default defineComponent({
