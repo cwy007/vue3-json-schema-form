@@ -141,3 +141,20 @@ gb -r | grep origin/3
   ```
 
   - [解决方法](https://github.com/microsoft/monaco-editor/blob/master/docs/integrate-esm.md#option-1-using-the-monaco-editor-loader-plugin)
+
+-[jsonpointer](https://github.com/janl/node-jsonpointer)
+
+> JSON Pointer defines a string syntax for identifying a specific value
+> within a JavaScript Object Notation (JSON) document.
+> <https://tools.ietf.org/html/rfc6901>
+
+-[lodash.union](https://www.npmjs.com/package/lodash.union)
+
+> The lodash method `_.union` exported as a Node.js module.
+
+- [json-schema-merge-allof](https://github.com/mokkabonna/json-schema-merge-allof#readme)
+
+> Simplify your schema by combining allOf
+
+- [Understanding JSON Schema](https://json-schema.org/understanding-json-schema/)
+- [json schema getting-started-step-by-step](https://json-schema.org/learn/getting-started-step-by-step.html)
