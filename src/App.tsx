@@ -106,7 +106,7 @@ export default defineComponent({
       demo.uiSchemaCode = toJson(d.uiSchema)
     })
 
-    const methodRef: Ref<any> = ref()
+    // const methodRef: Ref<any> = ref()
 
     // vue-jss lib
     const classesRef = useStyles()
@@ -138,7 +138,7 @@ export default defineComponent({
       const classes = classesRef.value
       const selected = selectedRef.value
 
-      console.log(methodRef)
+      // console.log(methodRef)
 
       return (
         // <StyleThemeProvider>
