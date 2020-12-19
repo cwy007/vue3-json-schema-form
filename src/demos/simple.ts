@@ -16,9 +16,16 @@ export default {
         type: 'string',
         minLength: 10,
       },
-      staticArray: {
+      multiTypeArray: {
         type: 'array',
         items: [{ type: 'string' }, { type: 'number' }],
+      },
+      singleTypeArray: {
+        type: 'array',
+        items: {
+          type: 'object',
+          properties: { name: { type: 'string' }, age: { type: 'number' } },
+        },
       },
     },
   },
@@ -42,5 +49,6 @@ export default {
     age: 75,
     bio: 'Roundhouse kicking asses since 1940',
     password: 'noneed',
+    singleTypeArray: [{ name: 'cwy', age: 28 }],
   },
 }
