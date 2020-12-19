@@ -1,4 +1,4 @@
-import { PropType } from 'vue'
+import { PropType, defineComponent } from 'vue'
 
 export enum SchemaTypes {
   'NUMBER' = 'number',
@@ -65,3 +65,9 @@ export const FieldPropsDefine = {
     required: true,
   },
 } as const
+
+export const TypeHelperComponent = defineComponent({
+  props: FieldPropsDefine,
+})
+
+export type CommonfieldType = typeof TypeHelperComponent
