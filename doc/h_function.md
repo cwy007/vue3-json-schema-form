@@ -4,13 +4,12 @@
 import { createApp, defineComponent } from 'vue'
 
 const App = defineComponent({
-  render () {
+  render() {
     return 123
-  }
+  },
 })
 
 createApp(App).mount('#app')
-
 ```
 
 vue 如何渲染节点内容
@@ -46,18 +45,18 @@ const img = require('./assets/logo.png')
 // div 为原生节点，使用字符串标识
 // 参数：节点类型、属性、子节点
 const App = defineComponent({
-  render () {
+  render() {
     return h('div', { id: 'app' }, [
       h('img', {
-        alt='Vue logo',
-        src=img
+        alt = 'Vue logo',
+        src = img,
       }),
       h(HelloWorld, {
         msg: 'Welcome to Your Vue.js + TypeScript App',
-        age: 12
-      })
+        age: 12,
+      }),
     ])
-  }
+  },
 })
 
 createApp(App).mount('#app')
@@ -72,19 +71,24 @@ createApp(App).mount('#app')
 //
 export function h(type: any, propsOrChildren?: any, children?: any): VNode {
   const l = arguments.length
-  if (l === 2) { // 两个参数的情况
-    if (isObject(propsOrChildren) && !isArray(propsOrChildren)) { // 是对象不是数组的情况
+  if (l === 2) {
+    // 两个参数的情况
+    if (isObject(propsOrChildren) && !isArray(propsOrChildren)) {
+      // 是对象不是数组的情况
       // single vnode without props
-      if (isVNode(propsOrChildren)) { // 是虚拟节点
+      if (isVNode(propsOrChildren)) {
+        // 是虚拟节点
         return createVNode(type, null, [propsOrChildren])
       }
       // props without children
       return createVNode(type, propsOrChildren) // 是属性 props
-    } else { // 不是对象是数组的情况
+    } else {
+      // 不是对象是数组的情况
       // omit props
       return createVNode(type, null, propsOrChildren)
     }
-  } else { // 大于等于三个参数的情况
+  } else {
+    // 大于等于三个参数的情况
     if (l > 3) {
       children = Array.prototype.slice.call(arguments, 2)
     } else if (l === 3 && isVNode(children)) {
@@ -94,3 +98,5 @@ export function h(type: any, propsOrChildren?: any, children?: any): VNode {
   }
 }
 ```
+
+每次重新渲染一个节点时，render 函数就会被重新执行

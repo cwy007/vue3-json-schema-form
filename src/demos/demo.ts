@@ -3,6 +3,6 @@ export default {
   schema: {
     type: 'number',
   },
-  default: undefined,
+  default: 1,
   uiSchema: {},
 }
