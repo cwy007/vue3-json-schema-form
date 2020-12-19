@@ -28,3 +28,11 @@ const context: { SchemaItem: SchemaItemDefine } | undefined = inject(
   SchemaFormContextKey,
 )
 ```
+
+widget 小部件
+
+debugger
+
+业务的开发 lib/
+
+const options = enumOptions.map((e: any) => ({ key: e, value: e }))

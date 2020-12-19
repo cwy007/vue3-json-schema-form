@@ -3,6 +3,7 @@ import { createUseStyles } from 'vue-jss'
 
 import { FieldPropsDefine, Schema } from '../types'
 import { useVJSFContext } from '../context'
+import SelectionWidget from '../widgets/SelectionWidget'
 
 const useStyles = createUseStyles({
   container: {
@@ -80,12 +81,12 @@ const ArrayItemWrapper = defineComponent({
 })
 
 /**
- * 单类型数组
+ * 单类型数组 single-type
  * {
  *   items: { type: string }
  * }
  *
- * 固定长度数组
+ * 固定长度，多类型数组 fixed length & multi-type
  * {
  *   items: [
  *     { type: string },
@@ -93,7 +94,7 @@ const ArrayItemWrapper = defineComponent({
  *   ]
  * }
  *
- *
+ * 多选类型数组 multi-select
  * {
  *   items: { type: string, enum: ['1', '2']}
  * }
@@ -166,6 +167,7 @@ export default defineComponent({
           )
         })
       } else if (!isSelect) {
+        // single type
         const arr = Array.isArray(value) ? value : []
 
         return arr.map((v: any, index: number) => {
@@ -187,6 +189,17 @@ export default defineComponent({
             </ArrayItemWrapper>
           )
         })
+      } else {
+        // multi-select
+        const enumOptions = (schema as any).items.enum
+        const options = enumOptions.map((e: any) => ({ key: e, value: e }))
+        return (
+          <SelectionWidget
+            onChange={props.onChange}
+            value={props.value}
+            options={options}
+          />
+        )
       }
 
       return <div>array field</div>

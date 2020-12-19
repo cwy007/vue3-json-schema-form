@@ -27,6 +27,13 @@ export default {
           properties: { name: { type: 'string' }, age: { type: 'number' } },
         },
       },
+      multiSelectArray: {
+        type: 'array',
+        items: {
+          type: 'string',
+          enum: ['foo', 'bar', 'foobar'],
+        },
+      },
     },
   },
   uiSchema: {
