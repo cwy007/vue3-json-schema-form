@@ -54,13 +54,14 @@ describe('ArrayField', () => {
   })
 
   it('should render multi-select type', () => {
+    let value: any = {}
     const wrapper = mount(JsonSchemaForm, {
       props: {
         schema: {
           type: 'array',
           items: { type: 'string', enum: ['foo', 'bar', 'baz'] },
         },
-        value: [],
+        value: value,
         onChange: (v) => {
           value = v
         },
