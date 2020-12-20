@@ -201,8 +201,6 @@ export default defineComponent({
           />
         )
       }
-
-      return <div>array field</div>
     }
   },
 })
