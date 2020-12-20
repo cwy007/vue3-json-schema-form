@@ -47,3 +47,56 @@ issue test
 测试用例迭代
 
 数值衡量测试效果
+
+[jestjs](https://jestjs.io/)
+
+预设和清理
+
+beforeEach
+
+afterEach
+
+beforeAll
+
+afterAll
+
+describe 有作用域
+
+it
+
+test
+
+异步测试
+
+Object.is
+
+同步
+
+done
+
+done()
+
+```js
+it('', (done) => {
+  setTimeout(() => {
+    // expect
+    done()
+  }, 1000)
+})
+
+it('', () => {
+  return new Promise((resolve) => {
+    // expect
+    resolve()
+  })
+})
+
+it('', async () => {
+  await wrapper.setProps({
+    msg: '',
+  })
+  // expect
+})
+
+// vue dom 的更新是异步的
+```

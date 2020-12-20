@@ -12,9 +12,7 @@ export default defineComponent({
 
     return () => {
       const { value } = props
-      return (
-        <input type="number" value={value as number} onInput={handleChange} />
-      )
+      return <input type="number" value={value as any} onInput={handleChange} />
     }
   },
 })

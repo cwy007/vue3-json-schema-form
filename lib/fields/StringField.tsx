@@ -11,9 +11,7 @@ export default defineComponent({
 
     return () => {
       const { value } = props
-      return (
-        <input type="text" value={value as string} onInput={handleChange} />
-      )
+      return <input type="text" value={value as any} onInput={handleChange} />
     }
   },
 })

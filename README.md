@@ -158,3 +158,5 @@ gb -r | grep origin/3
 
 - [Understanding JSON Schema](https://json-schema.org/understanding-json-schema/)
 - [json schema getting-started-step-by-step](https://json-schema.org/learn/getting-started-step-by-step.html)
+
+- [jestjs.io](https://jestjs.io/)
