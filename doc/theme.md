@@ -57,3 +57,44 @@ modal
 统一接口后，所有的内容皆可以自定义
 
 可以基于不同组件库来实现
+
+主题单独打包
+
+减少强依赖
+
+分开打包
+
+vue-cli
+
+构建目标
+
+应用
+
+库
+
+.common.js 使用 npm 安装使用
+
+.umd.js 通过 script 标签之间在浏览器中可以使用的一种打包方式
+
+环境变量的用法
+
+[针对应用的打包指令](https://cli.vuejs.org/zh/guide/build-targets.html#%E5%BA%94%E7%94%A8)
+
+"build": "vue-cli-service build"
+
+针对库的打包
+
+```js
+// TYPE=lib 环境变量
+// vue-cli-service build 为 vue-cli 提供的
+// --target lib 指定被打包代码所在的目录
+// --name index 指定生产的文件名称
+// --no-clean 打包时不清空 dist 目录
+// lib/index.ts 入口文件放在最后
+//
+"build:core": "TYPE=lib vue-cli-service build --target lib --name index --no-clean lib/index.ts",
+
+"build:theme": "TYPE=lib vue-cli-service build --target lib --name theme-default/index --no-clean lib/theme-default/index.tsx",
+
+"build": "rimraf dist && npm run build:core && npm run build:theme",
+```
