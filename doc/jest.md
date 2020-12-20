@@ -130,3 +130,7 @@ Branch 分支，对应判断条件 if else
 Funcs 是否每一个函数都有被执行到
 
 Lines 行覆盖率
+
+run only test case with 'multi' in case name
+
+npm run test:unit -- -t=multi
