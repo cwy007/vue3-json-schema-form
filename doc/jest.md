@@ -100,3 +100,7 @@ it('', async () => {
 
 // vue dom 的更新是异步的
 ```
+
+用 jest 写单元测试
+
+用 @vue/test-utils 测试 vue 组件
