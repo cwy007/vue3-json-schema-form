@@ -104,3 +104,29 @@ it('', async () => {
 用 jest 写单元测试
 
 用 @vue/test-utils 测试 vue 组件
+
+## npm run test:unit -- --coverage
+
+"test:unit": "vue-cli-service test:unit",
+
+`--` 告诉 npm 后面的参数 `--coverage` 是加给 `npm run test:unit` 对应的
+实际指令的 `vue-cli-service test:unit`
+
+--coverage 为 jest 的参数
+
+```bash
+
+npm run test:unit -- --coverage
+
+等价于
+
+vue-cli-service test:unit --coverage
+```
+
+Stmts 语句
+
+Branch 分支，对应判断条件 if else
+
+Funcs 是否每一个函数都有被执行到
+
+Lines 行覆盖率
