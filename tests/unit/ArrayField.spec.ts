@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
 
 import { StringField, NumberField, ArrayField } from '../../lib'
-import SelectionWidget from '../../lib/theme-default/Selection'
+import SelectionWidget from '../../lib/theme-default/SelectionWidget'
 import TestComponent from './utils/TestCompoent'
 
 describe('ArrayField', () => {
