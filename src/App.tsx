@@ -114,6 +114,7 @@ export default defineComponent({
     const classesRef = useStyles()
 
     const handleChange = (v: any) => {
+      console.log('data', v, 'toJson(v)', toJson(v))
       demo.data = v
       demo.dataCode = toJson(v)
     }

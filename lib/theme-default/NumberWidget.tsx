@@ -2,18 +2,19 @@ import { defineComponent } from 'vue'
 import { CommonWidgetPropsDefine } from '../types'
 
 export default defineComponent({
-  name: 'TextWidget',
+  name: 'NumberWidget',
   props: CommonWidgetPropsDefine,
   setup(props) {
     const handleChange = (e: any) => {
       const v = e.target.value
       e.target.value = props.value
-      props.onChange(v)
+      const value = Number(v)
+      Number.isNaN(value) ? props.onChange(undefined) : props.onChange(value)
     }
 
     return () => {
       const { value } = props
-      return <input type="text" value={value as any} onInput={handleChange} />
+      return <input type="number" value={value as any} onInput={handleChange} />
     }
   },
 })
