@@ -29,6 +29,7 @@ const useStyles = createUseStyles({
 
 // implementation
 export default defineComponent({
+  name: 'MonacoEditor',
   props: {
     code: {
       type: String as PropType<string>,

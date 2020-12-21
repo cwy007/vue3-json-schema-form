@@ -3,7 +3,6 @@ import { createUseStyles } from 'vue-jss'
 
 import { FieldPropsDefine, Schema } from '../types'
 import { useVJSFContext } from '../context'
-import SelectionWidget from '../widgets/SelectionWidget'
 
 const useStyles = createUseStyles({
   container: {
@@ -103,7 +102,7 @@ export default defineComponent({
   name: 'ArrayField',
   props: FieldPropsDefine,
   setup(props) {
-    const VJSFContext = useVJSFContext()
+    const context = useVJSFContext()
 
     const handleArrayItemChange = (v: any, index: number) => {
       const { value } = props
@@ -147,7 +146,12 @@ export default defineComponent({
 
     return () => {
       const { schema, rootSchema, value } = props
-      const Schemaitem = VJSFContext.SchemaItem
+      const {
+        SchemaItem,
+        theme: {
+          widgets: { SelectionWidget },
+        },
+      } = context
       const isMultiType = Array.isArray(schema.items)
       // as any 跳过类型检查
       const isSelect = schema.items && (schema.items as any).enum
@@ -157,7 +161,7 @@ export default defineComponent({
         const arr = Array.isArray(value) ? value : []
         return items.map((s: Schema, index: number) => {
           return (
-            <Schemaitem
+            <SchemaItem
               key={index}
               schema={s}
               rootSchema={rootSchema}
@@ -179,7 +183,7 @@ export default defineComponent({
               onUp={handleUp}
               onDown={handleDown}
             >
-              <Schemaitem
+              <SchemaItem
                 schema={schema.items as Schema}
                 value={v}
                 rootSchema={rootSchema}

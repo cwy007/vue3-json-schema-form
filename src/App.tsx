@@ -3,10 +3,12 @@ import { createUseStyles } from 'vue-jss'
 
 import MonacoEditor from './components/MonacoEditor'
 
+// 测试数据
 import demos from './demos'
 
 // 导入组件库
 import SchemaForm from '../lib'
+import themeDefault from '../lib/theme-default'
 
 // TODO: 在lib中export
 type Schema = any
@@ -191,6 +193,7 @@ export default defineComponent({
                 schema={demo.schema}
                 value={demo.data}
                 onChange={handleChange}
+                theme={themeDefault as any}
               />
             </div>
           </div>

@@ -98,3 +98,11 @@ vue-cli
 
 "build": "rimraf dist && npm run build:core && npm run build:theme",
 ```
+
+叶子节点表单项的渲染
+
+不能 import
+
+TODO
+
+RawBindings
