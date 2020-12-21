@@ -26,12 +26,12 @@ const ThemeProvider = defineComponent({
   },
 })
 
-export function getWidget(name: string) {
+export function getWidget(name: keyof Theme['widgets']) {
   const context = inject<ComputedRef<Theme>>(THEME_PROVIDER_KEY)
 
   if (!context) throw Error('vjsf theme required')
 
-  return computed(() => (context.value.widgets as any)[name])
+  return computed(() => context.value.widgets[name])
 }
 
 export default ThemeProvider
