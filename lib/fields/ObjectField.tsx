@@ -12,6 +12,7 @@ export default defineComponent({
 
     const handleObjectFieldChange = (key: string, v: any) => {
       const value: any = isObject(props.value) ? props.value : {}
+      console.log('v', typeof v)
       if (v === undefined) {
         delete value[key]
       } else {
