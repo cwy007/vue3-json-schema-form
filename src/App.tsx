@@ -86,6 +86,7 @@ export default defineComponent({
       schemaCode: string
       dataCode: string
       uiSchemaCode: string
+      customValidate: ((d: any, e: any) => void) | undefined
     } = reactive({
       schema: null,
       data: {},
@@ -93,19 +94,21 @@ export default defineComponent({
       schemaCode: '',
       dataCode: '',
       uiSchemaCode: '',
+      customValidate: undefined,
     })
 
     // 数据监听，确定 demo 的当前值
     watchEffect(() => {
       const index = selectedRef.value
       // demos is test data provide by lib user
-      const d = demos[index]
+      const d: any = demos[index]
       demo.schema = d.schema
       demo.data = d.default
       demo.uiSchema = d.uiSchema
       demo.schemaCode = toJson(d.schema)
       demo.dataCode = toJson(d.default)
       demo.uiSchemaCode = toJson(d.uiSchema)
+      demo.customValidate = d.customValidate
     })
 
     // const methodRef: Ref<any> = ref()
@@ -200,6 +203,7 @@ export default defineComponent({
                   onChange={handleChange}
                   contextRef={contextRef}
                   ref={nameRef}
+                  customValidate={demo.customValidate}
                 />
               </ThemeProvider>
               <button

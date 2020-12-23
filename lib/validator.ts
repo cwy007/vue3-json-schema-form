@@ -1,9 +1,10 @@
-import Ajv, { ErrorNoParams, ErrorObject, ErrorsTextOptions } from 'ajv'
-import toPath from 'lodash.topath'
+import Ajv, { ErrorObject } from 'ajv'
+// import toPath from 'lodash.topath'
 // 没有 ts type文件时，使用require加载
 const i18n = require('ajv-i18n')
 
 import { Schema } from './types'
+import { isObject } from './utils'
 
 interface TransformedErrorObject {
   name: string
@@ -106,6 +107,7 @@ export function validateFormData(
   formData: any,
   schema: Schema,
   locale = 'zh',
+  customValidate?: (data: any, errors: any) => void,
 ) {
   let validationError = null
   try {
@@ -128,9 +130,85 @@ export function validateFormData(
 
   const errorSchema = toErrorSchema(errors)
 
-  return {
-    errors,
-    errorSchema,
-    valid: errors.length === 0,
+  if (!customValidate) {
+    return {
+      errors,
+      errorSchema,
+      valid: errors.length === 0,
+    }
   }
+
+  const proxy = createErrorProxy()
+  customValidate(formData, proxy)
+  const newErrorSchema = mergetObjects(errorSchema, proxy, true)
+  const newErrors = toErrorList(newErrorSchema)
+
+  return {
+    errors: newErrors,
+    errorSchema: newErrorSchema,
+    valid: newErrors.length === 0,
+  }
+}
+
+function createErrorProxy() {
+  const raw = {}
+  return new Proxy(raw, {
+    get(target, key, receiver) {
+      if (key === 'addError') {
+        return (msg: string) => {
+          const __errors = Reflect.get(target, '__errors', receiver)
+          if (__errors && Array.isArray(__errors)) {
+            __errors.push(msg)
+          } else {
+            ;(target as any).__errors = [msg]
+          }
+        }
+      }
+
+      const res = Reflect.get(target, key, receiver)
+      if (res === undefined) {
+        const p: any = createErrorProxy()
+        ;(target as any)[key] = p
+        return p
+      }
+      return res
+    },
+  })
+}
+
+export function mergetObjects(obj1: any, obj2: any, concatArrays = false) {
+  // Recursively merge deeply nested objects
+  const accumulator = Object.assign({}, obj1) // Prevent mutation of source object
+  return Object.keys(obj2).reduce((accumulator, key) => {
+    const left = obj1 ? obj1[key] : {}
+    const right = obj2[key]
+    if (obj1 && obj1.hasOwnProperty(key) && isObject(right)) {
+      accumulator[key] = mergetObjects(left, right, concatArrays) // 递归
+    } else if (concatArrays && Array.isArray(left) && Array.isArray(right)) {
+      accumulator[key] = left.concat(right)
+    } else {
+      accumulator[key] = right
+    }
+    return accumulator
+  }, accumulator)
+}
+
+export function toErrorList(errorSchema: ErrorSchema, fieldName = 'root') {
+  // XXX: We should transform fieldName as a full field path string.
+  let errorList: TransformedErrorObject[] = []
+  if ('__errors' in errorSchema) {
+    errorList = errorList.concat(
+      (errorSchema.__errors || []).map((stack) => {
+        return {
+          message: `${fieldName}: ${stack}`,
+        } as TransformedErrorObject
+      }),
+    )
+  }
+  return Object.keys(errorSchema).reduce((acc, key) => {
+    if (key !== '__errors') {
+      acc = acc.concat(toErrorList(errorSchema[key], key))
+    }
+    return acc
+  }, errorList)
 }

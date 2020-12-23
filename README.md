@@ -165,5 +165,6 @@ gb -r | grep origin/3
   The UNIX command rm -rf for node.
 - [AMD, CMD, CommonJS 和 UMD](https://www.jianshu.com/p/bd4585b737d7)
 - [xargs 命令--Shell 管道传递参数](https://zhuanlan.zhihu.com/p/157758410)
-  `gb | grep [45678]-* | xargs git branch -D`
+  `gb | grep [45678]-* | xargs git branch -D` 这里 git branch 不能使用 alias gb
 - [git 删除多个分支，怎么操作？](https://blog.csdn.net/hxdafei1989/article/details/71403151)
+- [代理(Proxy)和反射(Reflection)](https://www.w3cplus.com/javascript/proxy-reflect.html)
