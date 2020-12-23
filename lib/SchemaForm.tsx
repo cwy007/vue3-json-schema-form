@@ -12,7 +12,7 @@ import Ajv, { Options } from 'ajv'
 import { Schema } from './types'
 import SchemaItem from './SchemaItem'
 import { SchemaFormContextKey } from './context'
-import { validateFormData } from './validator'
+import { validateFormData, ErrorSchema } from './validator'
 
 interface ContextRef {
   doValidate: () => {
@@ -59,6 +59,7 @@ export default defineComponent({
       SchemaItem,
     }
     provide(SchemaFormContextKey, context)
+    const errorSchemaRef: Ref<ErrorSchema> = shallowRef({})
 
     const validatorRef: Ref<Ajv> = shallowRef() as any
     watchEffect(() => {
@@ -81,6 +82,9 @@ export default defineComponent({
                 props.schema,
                 props.locale,
               )
+
+              errorSchemaRef.value = result.errorSchema
+
               return result
             },
           }
@@ -100,6 +104,7 @@ export default defineComponent({
           rootSchema={schema}
           value={value}
           onChange={handleChange}
+          errorSchema={errorSchemaRef.value || {}}
         />
       )
     }

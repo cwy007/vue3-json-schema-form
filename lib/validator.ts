@@ -17,7 +17,7 @@ interface ErrorSchemaObject {
   [level: string]: ErrorSchema
 }
 export type ErrorSchema = ErrorSchemaObject & {
-  __errors: string[]
+  __errors?: string[]
 }
 
 // export type ErrorSchema = {
@@ -73,6 +73,7 @@ function toErrorSchema(errors: TransformedErrorObject[]) {
         parent.__errors = [message]
       }
     }
+
     return errorSchema
   }, {} as ErrorSchema)
 }

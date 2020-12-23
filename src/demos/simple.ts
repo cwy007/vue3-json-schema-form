@@ -8,23 +8,35 @@ export default {
       firstName: {
         type: 'string',
         default: 'Chuck',
+        title: 'firstName',
+        minLength: 10,
       },
       lastName: {
         type: 'string',
+        title: 'lastName',
       },
       telephone: {
         type: 'string',
         minLength: 10,
+        title: 'telephone',
       },
       multiTypeArray: {
         type: 'array',
-        items: [{ type: 'string' }, { type: 'number' }],
+        items: [
+          { type: 'string', title: 'string' },
+          { type: 'number', title: 'number' },
+        ],
+        title: 'multiTypeArray',
       },
       singleTypeArray: {
         type: 'array',
+        title: 'singleTypeArray',
         items: {
           type: 'object',
-          properties: { name: { type: 'string' }, age: { type: 'number' } },
+          properties: {
+            name: { type: 'string', title: 'name' },
+            age: { type: 'number', title: 'age' },
+          },
         },
       },
       multiSelectArray: {
@@ -33,6 +45,7 @@ export default {
           type: 'string',
           enum: ['foo', 'bar', 'foobar'],
         },
+        title: 'multiSelectArray',
       },
     },
   },

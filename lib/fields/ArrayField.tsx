@@ -148,7 +148,7 @@ export default defineComponent({
     const SelectionWidgetRef = getWidget('SelectionWidget')
     return () => {
       const SelectionWidget = SelectionWidgetRef.value
-      const { schema, rootSchema, value } = props
+      const { schema, rootSchema, value, errorSchema } = props
       const { SchemaItem } = context
       const isMultiType = Array.isArray(schema.items)
       // as any 跳过类型检查
@@ -165,6 +165,7 @@ export default defineComponent({
               rootSchema={rootSchema}
               value={arr[index]}
               onChange={(v: any) => handleArrayItemChange(v, index)}
+              errorSchema={errorSchema[index] || {}}
             />
           )
         })
@@ -187,6 +188,7 @@ export default defineComponent({
                 rootSchema={rootSchema}
                 onChange={(v: any) => handleArrayItemChange(v, index)}
                 key={index}
+                errorSchema={errorSchema[index] || {}}
               />
             </ArrayItemWrapper>
           )
@@ -200,6 +202,8 @@ export default defineComponent({
             onChange={props.onChange}
             value={props.value}
             options={options}
+            errors={errorSchema.__errors}
+            schema={schema}
           />
         )
       }

@@ -7,6 +7,7 @@ export default {
         type: 'object',
         properties: {
           firstName: {
+            title: 'firstName',
             type: 'string',
             minLength: 10,
           },
