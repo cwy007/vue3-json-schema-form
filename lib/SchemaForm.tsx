@@ -1,8 +1,30 @@
-import { defineComponent, PropType, provide } from 'vue'
+import {
+  defineComponent,
+  PropType,
+  provide,
+  watch,
+  watchEffect,
+  shallowRef,
+  Ref,
+} from 'vue'
+import Ajv, { Options } from 'ajv'
 
 import { Schema } from './types'
 import SchemaItem from './SchemaItem'
 import { SchemaFormContextKey } from './context'
+import { validateFormData } from './validator'
+
+interface ContextRef {
+  doValidate: () => {
+    errors: any[]
+    valid: boolean
+  }
+}
+
+const defaultAjvOptions: Options = {
+  allErrors: true,
+  // jsonPointers: true,
+}
 
 export default defineComponent({
   name: 'SchemaForm',
@@ -18,6 +40,16 @@ export default defineComponent({
       type: Function as PropType<(v: any) => void>,
       required: true,
     },
+    contextRef: {
+      type: Object as PropType<Ref<ContextRef | undefined>>,
+    },
+    ajvOptions: {
+      type: Object as PropType<Options>,
+    },
+    locale: {
+      type: String,
+      default: 'zh',
+    },
   },
   setup(props) {
     const handleChange = (v: any) => {
@@ -27,6 +59,37 @@ export default defineComponent({
       SchemaItem,
     }
     provide(SchemaFormContextKey, context)
+
+    const validatorRef: Ref<Ajv> = shallowRef() as any
+    watchEffect(() => {
+      validatorRef.value = new Ajv({
+        ...defaultAjvOptions,
+        ...props.ajvOptions,
+      })
+    })
+
+    watch(
+      () => props.contextRef,
+      () => {
+        if (props.contextRef) {
+          props.contextRef.value = {
+            doValidate() {
+              console.log('------------>')
+              const result = validateFormData(
+                validatorRef.value,
+                props.value,
+                props.schema,
+                props.locale,
+              )
+              return result
+            },
+          }
+        }
+      },
+      {
+        immediate: true,
+      },
+    )
 
     return () => {
       const { schema, value } = props
