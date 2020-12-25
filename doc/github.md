@@ -15,3 +15,7 @@ github action
 [github.com/features/actions](https://github.com/features/actions)
 
 [github.com/actions/checkout](https://github.com/actions/checkout)
+
+在项目中绑定 codecov
+
+[codecov.io](https://codecov.io/)
