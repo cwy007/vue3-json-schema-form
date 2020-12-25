@@ -148,7 +148,7 @@ export default defineComponent({
     const SelectionWidgetRef = getWidget('SelectionWidget')
     return () => {
       const SelectionWidget = SelectionWidgetRef.value
-      const { schema, rootSchema, value, errorSchema } = props
+      const { schema, rootSchema, value, errorSchema, uiSchema } = props
       const { SchemaItem } = context
       const isMultiType = Array.isArray(schema.items)
       // as any 跳过类型检查
@@ -158,6 +158,10 @@ export default defineComponent({
         const items: Schema[] = schema.items as any
         const arr = Array.isArray(value) ? value : []
         return items.map((s: Schema, index: number) => {
+          const itemsUiSchema = uiSchema.items
+          const uis = Array.isArray(itemsUiSchema)
+            ? itemsUiSchema[index] || {}
+            : itemsUiSchema || {}
           return (
             <SchemaItem
               key={index}
@@ -166,6 +170,7 @@ export default defineComponent({
               value={arr[index]}
               onChange={(v: any) => handleArrayItemChange(v, index)}
               errorSchema={errorSchema[index] || {}}
+              uiSchema={uis}
             />
           )
         })
@@ -184,6 +189,7 @@ export default defineComponent({
             >
               <SchemaItem
                 schema={schema.items as Schema}
+                uiSchema={(uiSchema.items as any) || {}}
                 value={v}
                 rootSchema={rootSchema}
                 onChange={(v: any) => handleArrayItemChange(v, index)}

@@ -23,7 +23,7 @@ export default defineComponent({
     }
 
     return () => {
-      const { schema, rootSchema, value, errorSchema } = props
+      const { schema, rootSchema, value, errorSchema, uiSchema } = props
       const { SchemaItem } = VJSFContext
       const properties = schema.properties || {}
       const currentValue: any = isObject(value) ? value : {}
@@ -37,6 +37,7 @@ export default defineComponent({
             key={index}
             onChange={(v: any) => handleObjectFieldChange(k, v)}
             errorSchema={errorSchema[k] || {}}
+            uiSchema={uiSchema.properties ? uiSchema.properties[k] || {} : {}}
           />
         )
       })
