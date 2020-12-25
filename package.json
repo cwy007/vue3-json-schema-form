@@ -1,7 +1,12 @@
 {
   "name": "vue3-json-schema-form",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.2",
+  "license": "MIT",
+  "author": {
+    "name": "chenweiyan",
+    "email": "chanweiyan007@gmail.com",
+    "url": "https://cwy007.github.io"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build:core": "TYPE=lib vue-cli-service build --target lib --name index --no-clean lib/index.ts",
@@ -9,8 +14,20 @@
     "build": "rimraf dist && npm run build:core && npm run build:theme",
     "test:unit": "vue-cli-service test:unit",
     "test:unit:cov": "vue-cli-service test:unit --coverage",
+    "prepublishOnly": "npm run build",
     "lint": "vue-cli-service lint"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "files": ["dist"],
+  "main": "dist/index.common.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cwy007/vue3-json-schema-form.git"
+  },
+  "keywords": ["vue3", "json-schema", "form-generator"],
+  "homepage": "https://github.com/cwy007/vue3-json-schema-form#readme",
   "dependencies": {
     "ajv": "^7.0.1",
     "ajv-errors": "^2.0.0",

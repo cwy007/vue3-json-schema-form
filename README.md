@@ -174,3 +174,6 @@ gb -r | grep origin/3
 - [github.com/features/actions](https://github.com/features/actions)
 - [github.com/actions/checkout](https://github.com/actions/checkout)
 - [codecov.io](https://codecov.io/)
+- [package.json 配置项详解](https://segmentfault.com/a/1190000022329597)
+- [npm 错误 Can't publish over previously published ver?](https://www.zhihu.com/question/279752021)
+- [npm package.json 属性详解](https://www.cnblogs.com/tzyy/p/5193811.html)
