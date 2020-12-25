@@ -9,6 +9,7 @@
   },
   "scripts": {
     "serve": "vue-cli-service serve",
+    "build:github.io": "rimraf dist && TYPE=github.io  vue-cli-service build",
     "build:core": "TYPE=lib vue-cli-service build --target lib --name index --no-clean lib/index.ts",
     "build:theme": "TYPE=lib vue-cli-service build --target lib --name theme-default/index --no-clean lib/theme-default/index.tsx",
     "build": "rimraf dist && npm run build:core && npm run build:theme",

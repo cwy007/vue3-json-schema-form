@@ -14,6 +14,10 @@ npm run test:unit
 npm run lint
 ```
 
+[线上演示](https://cwy007.github.io/vue3-json-shcema-form/)
+
+![线上演示](https://tva1.sinaimg.cn/large/0081Kckwly1gm2hkgls5dj30uk0oujwq.jpg)
+
 ## API 设计
 
 ```jsx
@@ -177,3 +181,5 @@ gb -r | grep origin/3
 - [package.json 配置项详解](https://segmentfault.com/a/1190000022329597)
 - [npm 错误 Can't publish over previously published ver?](https://www.zhihu.com/question/279752021)
 - [npm package.json 属性详解](https://www.cnblogs.com/tzyy/p/5193811.html)
+- [publicPath](https://cli.vuejs.org/config/#publicpath)
+  add vue.config.js and deploy github.io

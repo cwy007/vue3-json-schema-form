@@ -221,6 +221,12 @@ export default defineComponent({
               <button onClick={validateForm}>校验</button>
             </div>
           </div>
+          <a
+            href="https://github.com/cwy007/vue3-json-schema-form"
+            target="_blank"
+          >
+            github
+          </a>
         </div>
         // </VJSFThemeProvider>
         // </StyleThemeProvider>
