@@ -10,6 +10,8 @@ import demos from './demos'
 import SchemaForm, { ThemeProvider } from '../lib'
 import themeDefault from '../lib/theme-default'
 
+import customFormat from './plugins/customFormat'
+
 // TODO: 在lib中export
 type Schema = any
 type UISchema = any
@@ -211,6 +213,7 @@ export default defineComponent({
                   ref={nameRef}
                   customValidate={demo.customValidate}
                   uiSchema={demo.uiSchema || {}}
+                  customFormats={customFormat}
                 />
               </ThemeProvider>
               <button onClick={validateForm}>校验</button>

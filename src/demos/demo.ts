@@ -15,11 +15,17 @@ export default {
         minLength: 10,
         title: 're-try password',
       },
+      color: {
+        type: 'string',
+        format: 'color',
+        title: 'Input Color',
+      },
     },
   },
   default: {
     pass1: '',
     pass2: '',
+    color: '#ffffff',
   },
   uiSchema: {
     properties: {
