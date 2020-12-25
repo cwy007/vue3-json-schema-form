@@ -5,8 +5,10 @@ import {
   ComputedRef,
   provide,
   inject,
+  ref,
 } from 'vue'
-import { Theme } from './types'
+import { Theme, UISchema } from './types'
+import { isObject } from './utils'
 
 const THEME_PROVIDER_KEY = Symbol()
 
@@ -26,7 +28,10 @@ const ThemeProvider = defineComponent({
   },
 })
 
-export function getWidget(name: keyof Theme['widgets']) {
+export function getWidget(name: keyof Theme['widgets'], uiSchema?: UISchema) {
+  if (uiSchema?.widget && isObject(uiSchema.widget)) {
+    return ref(uiSchema.widget)
+  }
   const context = inject<ComputedRef<Theme>>(THEME_PROVIDER_KEY)
 
   if (!context) throw Error('vjsf theme required')

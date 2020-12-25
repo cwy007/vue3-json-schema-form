@@ -210,6 +210,7 @@ export default defineComponent({
                   contextRef={contextRef}
                   ref={nameRef}
                   customValidate={demo.customValidate}
+                  uiSchema={demo.uiSchema || {}}
                 />
               </ThemeProvider>
               <button onClick={validateForm}>校验</button>

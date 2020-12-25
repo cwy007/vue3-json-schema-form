@@ -1,5 +1,5 @@
 import { getWidget } from '../theme'
-import { defineComponent } from 'vue'
+import { defineComponent, computed } from 'vue'
 import { FieldPropsDefine, CommonWidgetDefine } from '../types'
 
 export default defineComponent({
@@ -10,7 +10,14 @@ export default defineComponent({
       props.onChange(v)
     }
 
-    const TextWidgetRef = getWidget('TextWidget')
+    const TextWidgetRef = computed(() => {
+      return getWidget('TextWidget', props.uiSchema).value
+    })
+
+    const widgetOptionsRef = computed(() => {
+      const { widget, properties, items, ...rest } = props.uiSchema
+      return rest
+    })
 
     return () => {
       const TextWidget = TextWidgetRef.value as CommonWidgetDefine
@@ -22,6 +29,7 @@ export default defineComponent({
           onChange={handleChange}
           schema={schema}
           errors={errorSchema.__errors}
+          options={widgetOptionsRef.value}
         />
       )
     }
