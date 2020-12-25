@@ -1,5 +1,7 @@
 # vue3-json-schema-form
 
+[![coverage](https://img.shields.io/codecov/c/gh/cwy007/vue3-json-schema-form/main)](https://codecov.io/gh/cwy007/vue3-json-schema-form)
+
 a form generator based on jsonschema for vue3
 
 ## Project setup
@@ -168,3 +170,7 @@ gb -r | grep origin/3
   `gb | grep [45678]-* | xargs git branch -D` 这里 git branch 不能使用 alias gb
 - [git 删除多个分支，怎么操作？](https://blog.csdn.net/hxdafei1989/article/details/71403151)
 - [代理(Proxy)和反射(Reflection)](https://www.w3cplus.com/javascript/proxy-reflect.html)
+- [shields.io/](https://shields.io/)
+- [github.com/features/actions](https://github.com/features/actions)
+- [github.com/actions/checkout](https://github.com/actions/checkout)
+- [codecov.io](https://codecov.io/)
