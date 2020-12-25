@@ -117,7 +117,7 @@ export default defineComponent({
     const classesRef = useStyles()
 
     const handleChange = (v: any) => {
-      console.log('data', v, 'toJson(v)', toJson(v))
+      // console.log('data', v, 'toJson(v)', toJson(v))
       demo.data = v
       demo.dataCode = toJson(v)
     }
@@ -143,11 +143,17 @@ export default defineComponent({
     const contextRef = ref() // 进行验证用
     const nameRef = ref() // 获取 SchemaForm 引用
 
+    const validateForm = () => {
+      contextRef.value.doValidate().then((result: any) => {
+        console.log(result, '............')
+      })
+    }
+
     return () => {
       const classes = classesRef.value
       const selected = selectedRef.value
 
-      console.log('nameRef --------->', nameRef)
+      // console.log('nameRef --------->', nameRef)
 
       return (
         // <StyleThemeProvider>
@@ -206,11 +212,7 @@ export default defineComponent({
                   customValidate={demo.customValidate}
                 />
               </ThemeProvider>
-              <button
-                onClick={() => console.log(contextRef.value.doValidate())}
-              >
-                校验
-              </button>
+              <button onClick={validateForm}>校验</button>
             </div>
           </div>
         </div>
