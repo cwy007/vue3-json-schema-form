@@ -6,14 +6,19 @@ import StringField from './fields/StringField'
 import ObjectField from './fields/ObjectField'
 import ArrayField from './fields/ArrayField'
 import { retrieveSchema } from './utils'
+import { useVJSFContext } from './context'
 
 export default defineComponent({
   name: 'SchemaItem', // 中转组件
   props: FieldPropsDefine,
   setup(props) {
+    const formContext = useVJSFContext()
+
     const retrievedSchemaRef = computed(() => {
       const { schema, rootSchema, value } = props
-      return retrieveSchema(schema, rootSchema, value)
+      return formContext.transformSchemaRef.value(
+        retrieveSchema(schema, rootSchema, value),
+      )
     })
 
     return () => {

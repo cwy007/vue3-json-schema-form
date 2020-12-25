@@ -11,7 +11,13 @@ import {
 } from 'vue'
 import Ajv, { Options } from 'ajv'
 
-import { Schema, UISchema, CustomFormat, CommonWidgetDefine } from './types'
+import {
+  Schema,
+  UISchema,
+  CustomFormat,
+  CommonWidgetDefine,
+  CustomKeyword,
+} from './types'
 import SchemaItem from './SchemaItem'
 import { SchemaFormContextKey } from './context'
 import { validateFormData, ErrorSchema } from './validator'
@@ -61,6 +67,9 @@ export default defineComponent({
     customFormats: {
       type: [Array, Object] as PropType<CustomFormat[] | CustomFormat>,
     },
+    customKeywords: {
+      type: [Array, Object] as PropType<CustomKeyword[] | CustomKeyword>,
+    },
   },
   setup(props) {
     const handleChange = (v: any) => {
@@ -78,9 +87,29 @@ export default defineComponent({
         }, {} as { [key: string]: CommonWidgetDefine })
       }
     })
+
+    const transformSchemaRef = computed(() => {
+      if (props.customKeywords) {
+        const customKeywords = Array.isArray(props.customKeywords)
+          ? props.customKeywords
+          : [props.customKeywords]
+        return (schema: Schema) => {
+          let newSchema = schema
+          customKeywords.forEach((keyword) => {
+            if ((newSchema as any)[keyword.name]) {
+              newSchema = keyword.transformSchema(schema)
+            }
+          })
+          return newSchema
+        }
+      }
+      return (s: Schema) => s
+    })
+
     const context: any = {
       SchemaItem,
       formatMapRef,
+      transformSchemaRef,
     }
     provide(SchemaFormContextKey, context)
     const errorSchemaRef: Ref<ErrorSchema> = shallowRef({})
@@ -91,12 +120,23 @@ export default defineComponent({
         ...defaultAjvOptions,
         ...props.ajvOptions,
       })
+
       if (props.customFormats) {
         const customFormats = Array.isArray(props.customFormats)
           ? props.customFormats
           : [props.customFormats]
         customFormats.forEach((format) => {
           validatorRef.value.addFormat(format.name, format.definition)
+        })
+      }
+
+      if (props.customKeywords) {
+        const customKeywords = Array.isArray(props.customKeywords)
+          ? props.customKeywords
+          : [props.customKeywords]
+        customKeywords.forEach((keyword) => {
+          // validatorRef.value.addKeyword(keyword.name, keyword.definition)
+          validatorRef.value.addKeyword(keyword.definition)
         })
       }
     })

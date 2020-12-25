@@ -1,4 +1,4 @@
-import { FormatDefinition, Format } from 'ajv'
+import { Format, MacroKeywordDefinition } from 'ajv'
 import { PropType, DefineComponent } from 'vue'
 import { ErrorSchema } from './validator'
 
@@ -132,4 +132,10 @@ export interface CustomFormat {
   name: string
   definition: Format
   component: CommonWidgetDefine
+}
+
+export interface CustomKeyword {
+  name: string
+  definition: MacroKeywordDefinition
+  transformSchema: (originSchema: Schema) => Schema
 }

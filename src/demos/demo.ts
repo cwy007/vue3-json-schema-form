@@ -20,12 +20,19 @@ export default {
         format: 'color',
         title: 'Input Color',
       },
+      testkeyword: {
+        type: 'string',
+        minLength: 10,
+        test: 'true',
+        title: 'keyword test',
+      },
     },
   },
   default: {
     pass1: '',
     pass2: '',
-    color: '#ffffff',
+    color: '#861818',
+    testkeyword: '',
   },
   uiSchema: {
     properties: {

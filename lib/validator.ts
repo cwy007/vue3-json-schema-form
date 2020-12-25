@@ -35,7 +35,7 @@ function toErrorSchema(errors: TransformedErrorObject[]) {
   if (errors.length < 1) return {}
 
   return errors.reduce((errorSchema, error) => {
-    const { property, message } = error
+    const { property = '', message } = error
     //  n_ > _.toPath('/name/firstName') // => [ '/name/firstName' ]
     // _.toPath('a.b.c'); // => ['a', 'b', 'c']
     // _.toPath('a[0].b.c'); // => ['a', '0', 'b', 'c']
