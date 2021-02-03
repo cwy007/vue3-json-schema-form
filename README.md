@@ -14,7 +14,7 @@ npm run test:unit
 npm run lint
 ```
 
-[线上演示](https://cwy007.github.io/vue3-json-shcema-form/)
+[线上演示](https://cwy007.github.io/vue3-json-schema-form/)
 
 ![线上演示](https://tva1.sinaimg.cn/large/0081Kckwly1gm2hkgls5dj30uk0oujwq.jpg)
 
