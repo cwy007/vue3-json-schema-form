@@ -21,13 +21,19 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "dist/index.common.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/cwy007/vue3-json-schema-form.git"
   },
-  "keywords": ["vue3", "json-schema", "form-generator"],
+  "keywords": [
+    "vue3",
+    "json-schema",
+    "form-generator"
+  ],
   "homepage": "https://github.com/cwy007/vue3-json-schema-form#readme",
   "dependencies": {
     "ajv": "^7.0.1",
