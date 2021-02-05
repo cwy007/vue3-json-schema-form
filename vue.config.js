@@ -4,8 +4,7 @@ const CircularDependencyPlugin = require('circular-dependency-plugin')
 const isLib = process.env.TYPE === 'lib'
 
 module.exports = {
-  publicPath:
-    process.env.TYPE === 'github.io' ? './vue3-json-schema-form' : '/',
+  publicPath: process.env.TYPE === 'github.io' ? './' : '/',
   // configureWebpack(config) {
   //   console.log(config.plugins)
   // },
